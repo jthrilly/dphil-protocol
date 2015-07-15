@@ -1,0 +1,57 @@
+<div id="kineticCanvas"></div>
+
+<script>
+window.network.createEgo({
+  label:'Root',
+  name: 'test',
+  study_id: 'test_case'
+});
+
+window.network.addNode({nname_t0:'Friend 1'});
+window.network.addNode({nname_t0:'Friend 1'});
+
+var sociogram = new window.netCanvas.Modules.Sociogram();
+sociogram.init({
+    network: window.network,
+    // consecutive single tap - edge mode
+    // drag - layout mode
+    // double tap - select mode
+    // long press - community mode
+    modes:['edge', 'community'], //edge - create edges, position - lay out, select - node attributes
+    panels: ['mode', 'context'], // Mode - switch between modes, Context - convex hull drawing and labelling
+    dataDestination: {
+        // indexed by mode. one for each active mode
+        'edge': {
+            target: 'edge', // edge or node. where do we store the attriute?
+            variables: [
+                {'type': 'Friend'}, // node or edge type. Should this be promoted out of the variables array? Might need to respect existing exdges or nodes. When to we overwrite vs update?
+                {'namegenerator': 'closenest'}
+                // {'weight': function() { some callback eval code }}
+            ]
+        },
+        'select': {
+            target: 'node',
+            variables: [
+                {'drugUser': 'true'}
+            ]
+        },
+        'layout': { // probably not needed
+        },
+        'community' : {
+            target: 'node',
+            variables: [
+                {'memberOf': '$community'} // template language?
+            ]
+        }
+    },
+    criteria: { // criteria for being shown on this screen
+        type: 'edge'
+        query: {
+            type:'Dyad',
+            from:window.network.getEgo()
+        }
+    },
+    heading: "",
+    subheading: ""
+});
+</script>
