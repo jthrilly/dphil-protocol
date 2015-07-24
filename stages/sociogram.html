@@ -1,57 +1,100 @@
 <div id="kineticCanvas"></div>
 
 <script>
-window.network.createEgo({
-  label:'Root',
-  name: 'test',
-  study_id: 'test_case'
-});
 
-window.network.addNode({nname_t0:'Friend 1'});
-window.network.addNode({nname_t0:'Friend 1'});
+// window.network.resetNetwork();
+//
+// window.network.createEgo({
+//   label:'Root',
+//   name: 'test',
+//   study_id: 'test_case'
+// });
+//
+// window.network.addNode({name:'Friend 1'});
+// window.network.addNode({name:'Friend 2'});
 
 var sociogram = new window.netCanvas.Modules.Sociogram();
-sociogram.init({
+var properties = {
     network: window.network,
     // consecutive single tap - edge mode
     // drag - layout mode
     // double tap - select mode
     // long press - community mode
-    modes:['edge', 'community'], //edge - create edges, position - lay out, select - node attributes
+    modes:['Edge', 'Community', 'Position', 'Select'],
+    // edge - create edges,
+    // position - lay out,
+    // select - node attributes
+    // communuty - context mode
     panels: ['mode', 'context'], // Mode - switch between modes, Context - convex hull drawing and labelling
     dataDestination: {
         // indexed by mode. one for each active mode
-        'edge': {
-            target: 'edge', // edge or node. where do we store the attriute?
+        'Edge': {
+            type: 'edge', // edge or node. where do we store the attriute?
             variables: [
-                {'type': 'Friend'}, // node or edge type. Should this be promoted out of the variables array? Might need to respect existing exdges or nodes. When to we overwrite vs update?
-                {'namegenerator': 'closenest'}
+                {name:'type', value:'Friend'}, // node or edge type. Should this be promoted out of the variables array? Might need to respect existing exdges or nodes. When to we overwrite vs update?
+                {name:'namegenerator', value: 'closest'}
                 // {'weight': function() { some callback eval code }}
             ]
         },
-        'select': {
-            target: 'node',
+        'Select': {
+            type: 'node', //"hypernode" - create node for attribute type and link with edge?
+            mode: 'flip', // flip - flip binary value of flip_variable, create - delete or create node or edge
+            flip_variable: 'drugUser', // O
             variables: [
-                {'drugUser': 'true'}
+                {name: 'drugType', value: 'boozybix'}
             ]
         },
-        'layout': { // probably not needed
+        'Position': {
+            type: 'node',
+            variable: 'coords'
         },
-        'community' : {
-            target: 'node',
+        'Community' : {
+            type: 'node',
             variables: [
-                {'memberOf': '$community'} // template language?
+                {name: 'memberOf', value:'$community'} // template language?
+            ]
+        }
+    },
+    dataOrigin: {
+        // indexed by mode. one for each active mode
+        'Edge': {
+            type: 'edge', // edge or node. where do we store the attriute?
+            variables: [
+                {name: 'type', value:'Friend'}, // node or edge type. Should this be promoted out of the variables array? Might need to respect existing exdges or nodes. When to we overwrite vs update?
+                {name:'namegenerator', value:'closest'}
+                // {'weight': function() { some callback eval code }}
+            ]
+        },
+        'Select': {
+            type: 'node',
+            mode: 'flip', // flip - flip binary value of flip_variable, create - delete or create node or edge
+            flip_variable: 'drugUser', // O
+            variables: [
+                {name:'drugType', value:'boozybix'}
+            ]
+        },
+        'Position': {
+            type: 'node',
+            variable: 'coords'
+        },
+        'Community' : {
+            type: 'node',
+            variables: [
+                {name: 'memberOf', value:'$community'} // template language?
             ]
         }
     },
     criteria: { // criteria for being shown on this screen
-        type: 'edge'
+        type: 'node',
+        includeEgo: false,
         query: {
-            type:'Dyad',
-            from:window.network.getEgo()
         }
     },
-    heading: "",
-    subheading: ""
-});
+    heading: '',
+    subheading: ''
+};
+
+sociogram.init(properties);
+
+
 </script>
