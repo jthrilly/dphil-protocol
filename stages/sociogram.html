@@ -2,17 +2,6 @@
 
 <script>
 
-// window.network.resetNetwork();
-//
-// window.network.createEgo({
-//   label:'Root',
-//   name: 'test',
-//   study_id: 'test_case'
-// });
-//
-// window.network.addNode({name:'Friend 1'});
-// window.network.addNode({name:'Friend 2'});
-
 var sociogram = new window.netCanvas.Modules.Sociogram();
 var properties = {
     network: window.network,
@@ -26,6 +15,16 @@ var properties = {
     // select - node attributes
     // communuty - context mode
     panels: ['mode', 'context'], // Mode - switch between modes, Context - convex hull drawing and labelling
+    options: {
+        // defaultNodeSize: 35,
+        // defaultNodeColor: 'white',
+        // defaultNodeStrokeWidth: 5,
+        // defaultLabelColor: 'black',
+        // defaultEdgeColor: colors.edge,
+        // concentricCircleColor: '#ffffff',
+        // concentricCircleNumber: 4,
+        concentricCircleSkew: true
+    },
     dataDestination: {
         // indexed by mode. one for each active mode
         'Edge': {
@@ -47,12 +46,6 @@ var properties = {
         'Position': {
             type: 'node',
             variable: 'coords'
-        },
-        'Community' : {
-            type: 'node',
-            variables: [
-                {name: 'memberOf', value:'$community'} // template language?
-            ]
         }
     },
     dataOrigin: {
@@ -78,10 +71,10 @@ var properties = {
             variable: 'coords'
         },
         'Community' : {
-            type: 'node',
-            variables: [
-                {name: 'memberOf', value:'$community'} // template language?
-            ]
+            type: 'ego',
+            name: 'Groups',
+            egoVariable: 'contexts',
+            variable: 'contexts'
         }
     },
     criteria: { // criteria for being shown on this screen
@@ -96,5 +89,7 @@ var properties = {
 
 sociogram.init(properties);
 
-
+// sociogram.addHull('Friends');
+// sociogram.addPointToHull(sociogram.getNodeByID(1), 'Friends');
+// sociogram.addPointToHull(sociogram.getNodeByID(2), 'Friends');
 </script>

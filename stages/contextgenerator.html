@@ -1,0 +1,18 @@
+<div class="container full-height"></div>
+
+<script>
+var contextGenerator = new window.netCanvas.Modules.ContextGenerator();
+contextGenerator.init({
+	targetEl: $('.container'),
+	egoData: 'contexts',
+	nodeDestination: 'contexts',
+	createNodes: true,
+	prompts: [
+		'<h2>Think about the professionals you work with or employ. Which organisations are they from?</h2>',
+		'<h2>With which other groups or organisations do you interact with two or more people regularly?</h2>',
+		'<h2>Do you use websites, forums, or social media sites to discuss important matters with particular people? What are they?</h2>',
+		'<h2>Are there any groups of people you know well who all know each other through a shared activity?</h2>'
+
+	],
+});
+</script>
