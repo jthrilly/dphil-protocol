@@ -18,6 +18,9 @@ egoBuilder.build($('.form'), {
 			'type':'number',
 			'title':'Case Number',
 			'required':true
+		},
+		'start_time': {
+			'type':'hidden'
 		}
 	},
 	'options':{
@@ -27,16 +30,15 @@ egoBuilder.build($('.form'), {
 		},
 		onSubmit: function(data) {
 			console.log('update ego');
+			data.start_time = (new Date()).getTime();
 			console.log(data);
 			if (window.network.egoExists()) {
 				window.network.updateNode(window.network.getEgo().id, data, function() {
-					alert('updated');
 					window.netCanvas.Modules.session.nextStage();
 				});
 			} else {
 				window.network.createEgo(data);
 				window.netCanvas.Modules.session.nextStage();
-
 			}
 		},
 		onLoad: function() {
@@ -48,6 +50,7 @@ egoBuilder.build($('.form'), {
 		'buttons':{
 			'submit':{
 				label: 'Start',
+				update_label: 'Update',
 				id: 'submit-btn',
 				type: 'submit',
 				class: 'btn-primary'
