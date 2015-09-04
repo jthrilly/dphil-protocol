@@ -3,9 +3,58 @@
 </div>
 
 <script type="text/javascript">
-var egoBuilder = new window.netCanvas.Modules.EgoBuilder();
-egoBuilder.init({
-	targetEl: $('.form'),
-	heading: 'Welcome'
+var egoBuilder = new window.netCanvas.Modules.FormBuilder();
+egoBuilder.build($('.form'), {
+	'heading': 'Welcome',
+	'title': 'Create a new case',
+	'fields': {
+		'name': {
+			'type':'string',
+			'title':'Name',
+			'required':true,
+			'placeholder': 'Please enter your name.'
+		},
+		'case_number': {
+			'type':'number',
+			'title':'Case Number',
+			'required':true
+		}
+	},
+	'options':{
+		'attributes':{
+			'action':'http://httpbin.org/post',
+			'method':'post'
+		},
+		onSubmit: function(data) {
+			console.log('update ego');
+			console.log(data);
+			if (window.network.egoExists()) {
+				window.network.updateNode(window.network.getEgo().id, data, function() {
+					alert('updated');
+					window.netCanvas.Modules.session.nextStage();
+				});
+			} else {
+				window.network.createEgo(data);
+				window.netCanvas.Modules.session.nextStage();
+
+			}
+		},
+		onLoad: function() {
+		        if (window.network.egoExists()) {
+		            var ego = window.network.getEgo();
+		            egoBuilder.addData(ego);
+		        }
+		},
+		'buttons':{
+			'submit':{
+				label: 'Start',
+				id: 'submit-btn',
+				type: 'submit',
+				class: 'btn-primary'
+			}
+		}
+	}
 });
+
+
 </script>
