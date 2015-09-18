@@ -29,9 +29,9 @@ egoBuilder.build($('.form'), {
 			'method':'post'
 		},
 		onSubmit: function(data) {
-			console.log('update ego');
+			note.debug('update ego');
 			data.start_time = (new Date()).getTime();
-			console.log(data);
+			data.contexts = []; // create empty container for contexts;
 			if (window.network.egoExists()) {
 				window.network.updateNode(window.network.getEgo().id, data, function() {
 					window.netCanvas.Modules.session.nextStage();

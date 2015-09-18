@@ -4,7 +4,6 @@ var protocol = {
     },
     globals: {
         nameGenForm: function () {
-
             // An empty variable we will use later to allow data to be injected into the submit method
             var inject = false;
 
@@ -91,6 +90,8 @@ var protocol = {
     },
     stages: [
         {icon: 'fa-file-text', label:'Intro', page:'intro.html'},
+        {icon: 'fa-file-text', label:'Personal Budget Details', page:'pbdetails.html'},
+        {icon: 'fa-file-text', label:'Personal Budget Proportions', page:'pbproportions.html'},
         {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
         {icon: 'fa-file-text', label:'Sociogram', page:'sociogram.html'}
     ]
