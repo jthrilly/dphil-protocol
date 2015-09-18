@@ -57,7 +57,7 @@ var protocol = {
         					},
         					cancel: {
         						label: 'Cancel',
-        						id: 'cancel-btn',
+        						id: 'new-node-cancel-btn',
         						type: 'button',
         						class: 'btn-default',
         						action: function() {
