@@ -12,7 +12,7 @@ var protocol = {
                 var newNodeForm = '<div class="new-node-form dialog"></div>';
                 $('body').append(newNodeForm);
                 window.nameGenForm.build($('.new-node-form'), {
-        			title: 'Create a New Node',
+        			title: 'Add a person you know',
         			fields: {
         				first_name: {
                             title: 'First Name',
