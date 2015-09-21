@@ -8,7 +8,7 @@ var protocol = {
             var inject = false;
 
             var init = function() {
-                window.nameGenForm = new window.netCanvas.Modules.FormBuilder();
+                window.nameGenForm = new window.netCanvas.Modules.FormBuilder('nameGenForm');
                 var newNodeForm = '<div class="new-node-form dialog"></div>';
                 $('body').append(newNodeForm);
                 window.nameGenForm.build($('.new-node-form'), {
@@ -44,14 +44,13 @@ var protocol = {
                             hide();
         				},
         				onLoad: function(form) {
-                            console.log(form);
                             window.nameGenForm.show = show;
                             window.nameGenForm.hide = hide;
         				},
         				buttons: {
         					submit: {
         						label: 'Create',
-        						id: 'submit-btn',
+        						id: 'new-node-submit-btn',
         						type: 'submit',
         						class: 'btn-primary'
         					},
