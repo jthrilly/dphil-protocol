@@ -4,9 +4,6 @@ var protocol = {
     },
     globals: {
         nameGenForm: function () {
-            // An empty variable we will use later to allow data to be injected into the submit method
-            var inject = false;
-
             var init = function() {
                 window.nameGenForm = new window.netCanvas.Modules.FormBuilder('nameGenForm');
                 var newNodeForm = '<div class="new-node-form dialog"></div>';
@@ -33,19 +30,20 @@ var protocol = {
                             required: true,
                         }
         			},
+                    show: function() {
+                        $('.new-node-form, .black-overlay').addClass('show');
+                        $('.new-node-form :input:visible:enabled:first').focus();
+                    },
+                    hide: function() {
+                        window.nameGenForm.reset();
+                        $('.new-node-form, .black-overlay').removeClass('show');
+                    },
         			options: {
         				onSubmit: function(data) {
-                            // Check if we have data to inject
-                            if (inject) {
-                                $.extend(data, inject);
-                                inject = false;
-                            }
                             window.network.addNode(data);
-                            hide();
+                            thisForm.hide();
         				},
         				onLoad: function(form) {
-                            window.nameGenForm.show = show;
-                            window.nameGenForm.hide = hide;
         				},
         				buttons: {
         					submit: {
@@ -60,24 +58,12 @@ var protocol = {
         						type: 'button',
         						class: 'btn-default',
         						action: function() {
-                                    hide();
+                                    
         						}
         					}
         				}
         			}
         		});
-            };
-
-            var hide = function() {
-                window.nameGenForm.reset();
-                $('.new-node-form, .black-overlay').removeClass('show');
-            };
-            var show = function(hiddenProperties) {
-                if (hiddenProperties) {
-                    inject = hiddenProperties;
-                }
-                $('.new-node-form, .black-overlay').addClass('show');
-                $('.new-node-form :input:visible:enabled:first').focus();
             };
 
             init();
@@ -91,6 +77,7 @@ var protocol = {
         {icon: 'fa-file-text', label:'Intro', page:'intro.html'},
         {icon: 'fa-file-text', label:'Personal Budget Details', page:'pbdetails.html'},
         {icon: 'fa-file-text', label:'Personal Budget Proportions', page:'pbproportions.html'},
+        {icon: 'fa-file-text', label:'Context Intro', page:'contextintro.html'},
         {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
         {icon: 'fa-file-text', label:'Sociogram', page:'sociogram.html'}
     ]
