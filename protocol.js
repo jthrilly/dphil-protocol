@@ -5,27 +5,27 @@ var protocol = {
     globals: {
         nameGenForm: function () {
             var init = function() {
-                window.nameGenForm = new window.netCanvas.Modules.FormBuilder('nameGenForm');
+                var nameGenForm = new window.netCanvas.Modules.FormBuilder('nameGenForm');
                 var newNodeForm = '<div class="new-node-form dialog"></div>';
                 $('body').append(newNodeForm);
-                window.nameGenForm.build($('.new-node-form'), {
+                nameGenForm.build($('.new-node-form'), {
         			title: 'Add a person you know',
         			fields: {
         				first_name: {
                             title: 'First Name',
-        					type: 'string',
+        					type: 'text',
         					placeholder: 'First Name',
         					required: true,
         				},
                         last_name: {
                             title: 'Last Name',
-                            type: 'string',
+                            type: 'text',
                             placeholder: 'Last Name',
                             required: true,
                         },
                         label: {
                             title: 'Nickname',
-                            type: 'string',
+                            type: 'text',
                             placeholder: 'Nickname',
                             required: true,
                         }
@@ -40,8 +40,18 @@ var protocol = {
                     },
         			options: {
         				onSubmit: function(data) {
-                            window.network.addNode(data);
-                            thisForm.hide();
+
+                            // Add or update based on the presence of an ID field
+                            if (data.id) {
+                                var id = data.id;
+                                delete data.id;
+                                window.network.updateNode(id, data);
+                            } else {
+                                window.network.addNode(data);
+                            }
+
+                            window.forms.nameGenForm.reset();
+                            window.forms.nameGenForm.hide();
         				},
         				onLoad: function(form) {
         				},
@@ -58,12 +68,15 @@ var protocol = {
         						type: 'button',
         						class: 'btn-default',
         						action: function() {
-                                    
+                                    window.forms.nameGenForm.reset();
+                                    window.forms.nameGenForm.hide();
         						}
         					}
         				}
         			}
-        		});
+        		}, {
+                    inline: true
+                });
             };
 
             init();
@@ -79,6 +92,11 @@ var protocol = {
         {icon: 'fa-file-text', label:'Personal Budget Proportions', page:'pbproportions.html'},
         {icon: 'fa-file-text', label:'Context Intro', page:'contextintro.html'},
         {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
-        {icon: 'fa-file-text', label:'Sociogram', page:'sociogram.html'}
+        {icon: 'fa-file-text', label:'NG: Close', page:'namegen-close.html'},
+        {icon: 'fa-file-text', label:'NG: Support', page:'namegen-support.html'},
+        {icon: 'fa-file-text', label:'NG: Advice', page:'namegen-advice.html'},
+        {icon: 'fa-file-text', label:'NG: Information', page:'namegen-information.html'},
+        {icon: 'fa-file-text', label:'Layout', page:'layout.html'},
+        {icon: 'fa-file-text', label:'Sociogram Multi', page:'sociogram-multi.html'}
     ]
 };

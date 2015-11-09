@@ -1,0 +1,35 @@
+<div class="container full-height">
+
+</div>
+
+<script>
+
+var namegenerator = new window.netCanvas.Modules.NameGeneratorMulti();
+namegenerator.init({
+	targetEl: $('.container'),
+	network: window.network,
+	form: window.forms.newNodeForm,
+	dataOrigin: {
+		type: 'node', // edge or node.
+		variables: [
+			{
+				prompt: 'Who has supported you emotionally? For example comforted you when you have been upset or angry.',
+				label: 'ng',
+				value: 'support-emotional'
+			},
+			{
+				prompt: 'Who has supported you practically? For example helped you with something you found difficult or couldn’t have done by yourself.',
+				label: 'ng',
+				value: 'support-practical'
+			},
+			{
+				prompt: 'Is there anyone you feel should have supported you, but didn’t?', 
+				label: 'ng',
+				value: 'support-failed'
+			}
+		]
+	}
+});
+
+
+</script>

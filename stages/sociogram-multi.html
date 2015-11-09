@@ -1,0 +1,214 @@
+<div id="kineticCanvas"></div>
+
+<script>
+
+var sociogram = new window.netCanvas.Modules.SociogramMulti();
+var properties = {
+    network: window.network,
+    targetEl: 'kineticCanvas',
+    modes:['Community', 'Position'],
+    panels: ['mode', 'details'],
+    options: {
+        concentricCircleSkew: true
+    },
+    dataOrigin: {
+        'Position': {
+            type: 'node',
+            variable: 'coords'
+        },
+        'Community' : {
+            type: 'ego',
+            name: 'Groups',
+            egoVariable: 'contexts',
+            variable: 'contexts'
+        }
+    },
+    prompts: [
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Support',
+                variable: 'support_emotional',
+                shortLabel: 'Emotional',
+                value: '1'
+            },
+            prompt: 'Who has supported you emotionally? For example comforted you when you have been upset or angry.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Support',
+                variable: 'support_practical',
+                shortLabel: 'Practical',
+                value: '1'
+            },
+            prompt: 'Who has supported you practically? For example helped you with something you found difficult or couldn’t have done by yourself.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Support',
+                variable: 'support_failed',
+                shortLabel: 'Failed',
+                value: '1'
+            },
+            prompt: 'Is there anyone you feel should have supported you, but didn’t?'
+        },
+        {
+            dataType: 'edge', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: false,
+            prompt: 'Connect anyone who you think would spend time together socially, independently of you.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Advice',
+                variable: 'advice_given',
+                shortLabel: 'Gave',
+                value: '1'
+            },
+            prompt: 'Who did you get advice from as part of the process?'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Advice',
+                variable: 'advice_refused',
+                shortLabel: 'Refused',
+                value: '1'
+            },
+            prompt: 'Is there anyone who you asked for advice, but who refused?'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Advice',
+                variable: 'advice_negative',
+                shortLabel: 'Bad',
+                value: '1'
+            },
+            prompt: 'Is there anyone who you feel, in retrospect, gave you bad advice? That is, advice that didn’t make things better (or made things worse), or advice you ignored.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Information',
+                variable: 'info_given',
+                shortLabel: 'Gave',
+                value: '1'
+            },
+            prompt: 'Who has provided you with information related to planning or managing your care?'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Information',
+                variable: 'info_refused',
+                shortLabel: 'Refused',
+                value: '1'
+            },
+            prompt: 'Is there anyone you have asked for information, but who hasn\'t been able to provide it?'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Technology',
+                variable: 'met_online',
+                shortLabel: 'Met Online?',
+                value: '1'
+            },
+            prompt: 'Is there anyone important, either personally, or in the context of your social care, who you know primarily through the internet? For example, someone you speak to on a forum or social media site.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Role',
+                variable: 'is_carer',
+                shortLabel: 'Carer?',
+                value: '1'
+            },
+            prompt: 'If they are present in your network, please select your carer or carers.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Role',
+                variable: 'is_employee',
+                shortLabel: 'Employee?',
+                value: '1'
+            },
+            prompt: 'Please tap on anyone you employ in a social care capacity, such as a personal assistant or someone who helps with transportation.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Role',
+                variable: 'is_localauthority',
+                shortLabel: 'L. Authority?',
+                value: '1'
+            },
+            prompt: 'Please tap on anyone who works for a local authority.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: [
+                {label: 'type', value: 'social'}
+            ],
+            showSelected: {
+                group: 'Role',
+                variable: 'is_otherprofessional',
+                shortLabel: 'Other prof.?',
+                value: '1'
+            },
+            prompt: 'Please tap on anyone else who is a professional in the general area of social care (perhaps working for a care provider, or a charity).'
+        }
+
+    ],
+    criteria: { // criteria for being shown on this screen
+        includeEgo: false,
+        query: {
+        }
+    }
+};
+sociogram.init(properties);
+
+</script>

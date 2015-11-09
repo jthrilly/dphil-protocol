@@ -1,0 +1,30 @@
+<div class="container full-height">
+
+</div>
+
+<script>
+
+var namegenerator = new window.netCanvas.Modules.NameGenerator();
+namegenerator.init({
+	targetEl: $('.container'),
+	network: window.network,
+	form: window.forms.newNodeForm,
+	heading: 'Within the last 6 months or so, who have you felt particularly close to, or discussed important personal matters with?',
+	subheading: '',
+	panels: ['current'],
+	dataOrigin: {
+		type: 'node', // edge or node.
+		variables: [
+			{label: 'ng', value: 'close'}
+		]
+	},
+	dataTarget: {
+		type: 'node',
+		variables: [
+			{label: 'ng', value: 'close'},
+		]
+	}
+});
+
+
+</script>

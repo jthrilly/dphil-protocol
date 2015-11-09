@@ -1,0 +1,57 @@
+<div id="kineticCanvas"></div>
+
+<script>
+
+var sociogram = new window.netCanvas.Modules.Sociogram();
+var properties = {
+    network: window.network,
+    // consecutive single tap - edge mode
+    // drag - layout mode
+    // double tap - select mode
+    // long press - community mode
+    modes:['Position', 'Community'],
+    // edge - create edges,
+    // position - lay out,
+    // select - node attributes
+    // communuty - context mode
+    panels: ['details'],
+    options: {
+        // defaultNodeSize: 35,
+        // defaultNodeColor: 'white',
+        // defaultNodeStrokeWidth: 5,
+        // defaultLabelColor: 'black',
+        // defaultEdgeColor: colors.edge,
+        // concentricCircleColor: '#ffffff',
+        // concentricCircleNumber: 4,
+        concentricCircleSkew: true
+    },
+    dataDestination: {
+        'Position': {
+            type: 'node',
+            variable: 'coords'
+        }
+    },
+    dataOrigin: {
+        'Position': {
+            type: 'node',
+            variable: 'coords'
+        },
+        'Community' : {
+            type: 'ego',
+            name: 'Groups',
+            egoVariable: 'contexts',
+            variable: 'contexts'
+        }
+    },
+    criteria: { // criteria for being shown on this screen
+        type: 'node',
+        includeEgo: false,
+        query: {
+        }
+    },
+    heading: 'Layout',
+    subheading: 'Here is the layout screen.'
+};
+sociogram.init(properties);
+
+</script>

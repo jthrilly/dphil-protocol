@@ -1,0 +1,35 @@
+<div class="container full-height">
+
+</div>
+
+<script>
+
+var namegenerator = new window.netCanvas.Modules.NameGeneratorMulti();
+namegenerator.init({
+	targetEl: $('.container'),
+	network: window.network,
+	form: window.forms.newNodeForm,
+	dataOrigin: {
+		type: 'node', // edge or node.
+		variables: [
+			{
+				prompt: 'Who did you get advice from as part of the process?',
+				label: 'ng',
+				value: 'advice_given'
+			},
+			{
+				prompt: 'Is there anyone who you asked for advice, but who refused?',
+				label: 'ng',
+				value: 'advice_refused'
+			},
+			{
+				prompt: 'Is there anyone who you feel, in retrospect, gave you bad advice? That is, advice that didn’t make things better (or made things worse), or advice you ignored.',
+				label: 'ng',
+				value: 'advice_negative'
+			}
+		]
+	}
+});
+
+
+</script>
