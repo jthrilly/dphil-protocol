@@ -4,24 +4,29 @@
 
 <script>
 
-var namegenerator = new window.netCanvas.Modules.NameGenerator();
+
+var namegenerator = new window.netCanvas.Modules.NameGeneratorMulti();
 namegenerator.init({
 	targetEl: $('.container'),
+	panels: ['current'],
 	network: window.network,
 	form: window.forms.newNodeForm,
-	heading: 'Within the last 6 months or so, who have you felt particularly close to, or discussed important personal matters with?',
-	subheading: '',
-	panels: ['current'],
-	dataOrigin: {
-		type: 'node', // edge or node.
-		variables: [
-			{label: 'ng', value: 'close'}
-		]
-	},
-	dataTarget: {
-		type: 'node',
-		variables: [
-			{label: 'ng', value: 'close'},
+	data: {
+		origin: 'node', // edge or node.
+		namegenerators: [
+			{
+				prompt: 'Within the last 6 months or so, who have you felt particularly close to, or discussed important personal matters with?',
+				label: 'close',
+				togglePanelVariable: 'close',
+				variables: [
+					{
+						label: 'close',
+						value: 'true',
+						type: 'select',
+						showOnForm: false,
+					}
+				]
+			}
 		]
 	}
 });
