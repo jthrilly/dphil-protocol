@@ -1,0 +1,33 @@
+<div class="container full-height">
+
+</div>
+
+<script>
+
+var namegenerator = new window.netCanvas.Modules.NameGeneratorMulti();
+namegenerator.init({
+	targetEl: $('.container'),
+	network: window.network,
+	form: window.forms.newNodeForm,
+	data: {
+		origin: 'node', // edge or node.
+		namegenerators: [
+			{
+				prompt: 'On the internet, is there anyone important (either personally, or in the context of your social care)?',
+				label: 'technologically_mediated',
+				togglePanelVariable: 'technologically_mediated',
+				variables: [
+					{
+						label: 'technologically_mediated',
+						value: 'true',
+						type: 'select',
+						showOnForm: false,
+					}
+				]
+			}
+		]
+	}
+});
+
+
+</script>

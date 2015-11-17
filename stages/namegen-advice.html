@@ -9,23 +9,47 @@ namegenerator.init({
 	targetEl: $('.container'),
 	network: window.network,
 	form: window.forms.newNodeForm,
-	dataOrigin: {
-		type: 'node', // edge or node.
-		variables: [
+	data: {
+		origin: 'node', // edge or node.
+		namegenerators: [
 			{
 				prompt: 'Who did you get advice from as part of the process?',
-				label: 'ng',
-				value: 'advice_given'
+				label: 'advice_given',
+				togglePanelVariable: 'advice_given',
+				variables: [
+					{
+						label: 'advice_given',
+						value: 'true',
+						type: 'select',
+						showOnForm: false,
+					}
+				]
 			},
 			{
 				prompt: 'Is there anyone who you asked for advice, but who refused?',
-				label: 'ng',
-				value: 'advice_refused'
+				label: 'advice_refused',
+				togglePanelVariable: 'advice_refused',
+				variables: [
+					{
+						label: 'advice_refused',
+						value: 'true',
+						type: 'select',
+						showOnForm: false,
+					}
+				]
 			},
 			{
 				prompt: 'Is there anyone who you feel, in retrospect, gave you bad advice? That is, advice that didn’t make things better (or made things worse), or advice you ignored.',
-				label: 'ng',
-				value: 'advice_negative'
+				label: 'advice_negative',
+				togglePanelVariable: 'advice_negative',
+				variables: [
+					{
+						label: 'advice_negative',
+						value: 'true',
+						type: 'select',
+						showOnForm: false,
+					}
+				]
 			}
 		]
 	}
