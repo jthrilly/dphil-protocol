@@ -1,0 +1,59 @@
+<div id='kineticCanvas'></div>
+
+<script>
+
+var missing = new window.netCanvas.Modules.SociogramMissing();
+var properties = {
+    network: window.network,
+    targetEl: 'kineticCanvas',
+    panels: ['mode', 'details'],
+    options: {
+        concentricCircleSkew: true
+    },
+    prompts: [
+        {
+            prompt: 'Is this support_emotional present?',
+            variable: 'support_emotional'
+        },
+        {
+            prompt: 'Is this support_practical present?',
+            variable: 'support_practical'
+        },
+        {
+            prompt: 'Is this support_failed present?',
+            variable: 'support_failed'
+        },
+        {
+            prompt: 'Is this advice_given present?',
+            variable: 'advice_given'
+        },
+        {
+            prompt: 'Is this advice_refused present?',
+            variable: 'advice_refused'
+        },
+        {
+            prompt: 'Is this advice_negative present?',
+            variable: 'advice_negative'
+        },
+        {
+            prompt: 'Is this info_given present?',
+            variable: 'info_given'
+        },
+        {
+            prompt: 'Is this info_refused present?',
+            variable: 'info_refused'
+        },
+        {
+            prompt: 'Is this technologically_mediated present?',
+            variable: 'technologically_mediated'
+        }
+    ],
+    criteria: { // criteria for being shown on this screen
+        includeEgo: false,
+        query: {
+        }
+    }
+};
+missing.init(properties);
+
+</script>

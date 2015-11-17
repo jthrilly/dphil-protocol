@@ -98,6 +98,7 @@ var protocol = {
         {icon: 'fa-file-text', label:'NG: Information', page:'namegen-information.html'},
         {icon: 'fa-file-text', label:'NG: Technology', page:'namegen-technology.html'},
         {icon: 'fa-file-text', label:'Layout', page:'layout.html'},
+        {icon: 'fa-file-text', label:'Sociogram Missing', page:'sociogram-missing.html'},
         {icon: 'fa-file-text', label:'Sociogram Multi', page:'sociogram-multi.html'}
     ]
 };
