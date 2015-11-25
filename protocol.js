@@ -1,9 +1,13 @@
+/* global window, $ */
+/* exported protocol */
+
 var protocol = {
     sessionParameters: {
-        name: "DPhil Protocol"
+        name: 'DPhil Protocol'
     },
     globals: {
         nameGenForm: function () {
+            'use strict';
             var init = function() {
                 var nameGenForm = new window.netCanvas.Modules.FormBuilder('nameGenForm');
                 var newNodeForm = '<div class="new-node-form dialog"></div>';
@@ -28,6 +32,13 @@ var protocol = {
                             type: 'text',
                             placeholder: 'Nickname',
                             required: true,
+                        },
+                        contexts: {
+                            type: 'custom',
+                            customType: 'contextField',
+                            options: {
+                                name: 'Josh'
+                            }
                         }
         			},
                     show: function() {
@@ -38,23 +49,23 @@ var protocol = {
                         window.nameGenForm.reset();
                         $('.new-node-form, .black-overlay').removeClass('show');
                     },
+                    submit: function(data) {
+                        // Add or update based on the presence of an ID field
+                        if (data.id) {
+                            var id = data.id;
+                            delete data.id;
+                            window.network.updateNode(id, data);
+                        } else {
+                            window.network.addNode(data);
+                        }
+
+                        window.forms.nameGenForm.reset();
+                        window.forms.nameGenForm.hide();
+                    },
+                    load: function(form) {
+                        return form;
+                    },
         			options: {
-        				onSubmit: function(data) {
-
-                            // Add or update based on the presence of an ID field
-                            if (data.id) {
-                                var id = data.id;
-                                delete data.id;
-                                window.network.updateNode(id, data);
-                            } else {
-                                window.network.addNode(data);
-                            }
-
-                            window.forms.nameGenForm.reset();
-                            window.forms.nameGenForm.hide();
-        				},
-        				onLoad: function(form) {
-        				},
         				buttons: {
         					submit: {
         						label: 'Create',
@@ -72,7 +83,94 @@ var protocol = {
                                     window.forms.nameGenForm.hide();
         						}
         					}
-        				}
+        				},
+                        customFields: {
+                            contextField: {
+                                markup: function () {
+
+                                    var markup = '';
+                                    var egoContexts = window.network.getEgo().contexts;
+                                    markup += `<label class="control-label">Contexts</label>`;
+                                    var i = 0;
+                                    for (let context of egoContexts) {
+                                        markup += `
+                                        <span class="button-checkbox">
+                                            <button type="button" class="btn-checkbox" data-index="${i}">${context}</button>
+                                            <input type="checkbox" class="hidden"/>
+                                        </span>
+                                        `;
+                                        // markup += `<input type="checkbox" data-field="Contexts" name="${context}" id="${context}">
+                                        //     <label class="checkbox" for="is_carer">${context}</label>`;
+                                        i++;
+                                    }
+                                    return markup;
+                                },
+                                initialise: function() {
+                                    $(function () {
+                                        $('.button-checkbox').each(function () {
+
+                                            // Settings
+                                            var $widget = $(this),
+                                                $button = $widget.find('button'),
+                                                $checkbox = $widget.find('input:checkbox');
+
+                                            // Event Handlers
+                                            $button.on('click', function () {
+                                                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                                                $checkbox.triggerHandler('change');
+                                                updateDisplay();
+                                            });
+                                            $checkbox.on('change', function () {
+                                                updateDisplay();
+                                            });
+
+                                            // Actions
+                                            function updateDisplay() {
+                                                var isChecked = $checkbox.is(':checked');
+
+                                                // Set the button's state
+                                                $button.data('state', (isChecked) ? 'on' : 'off');
+
+                                                // Update the button's color
+                                                if (isChecked) {
+                                                    $button
+                                                        .addClass('active');
+                                                }
+                                                else {
+                                                    $button
+                                                        .removeClass('active');
+                                                }
+                                            }
+
+                                            // Initialization
+                                            function init() {
+
+                                                updateDisplay();
+                                            }
+                                            init();
+                                        });
+                                    });
+                                },
+                                addData: function() {
+
+                                },
+                                reset: function() {
+                                    $(function () {
+                                        $('.button-checkbox').each(function () {
+                                            // Settings
+                                            var $widget = $(this),
+                                                $button = $widget.find('button');
+
+                                            $button.removeClass('active');
+
+                                        });
+                                    });
+                                },
+                                destroy: function() {
+
+                                }
+                            }
+                        }
         			}
         		}, {
                     inline: true
@@ -84,7 +182,10 @@ var protocol = {
         }
     },
     skipFunctions: {
-        exampleSkip: function() { return false; }
+        exampleSkip: function() {
+            'use strict';
+            return false;
+        }
     },
     stages: [
         {icon: 'fa-file-text', label:'Intro', page:'intro.html'},

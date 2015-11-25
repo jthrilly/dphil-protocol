@@ -1,0 +1,98 @@
+@import '../../netCanvas/less/colors.less';
+
+.btn-checkbox {
+    width: 100px;
+    height: 100px;
+    border-width:10px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    vertical-align: middle;
+    font-size:10px;
+    white-space: normal;
+    background: white;
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+}
+
+.btn-checkbox.active {
+    color: @text-color;
+}
+
+.btn-checkbox[data-index='0'] {
+    border-color: @brand-primary;
+    &.active {
+        background: @brand-primary;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='1'] {
+    border-color: @brand-success;
+    &.active {
+        background: @brand-success;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='2'] {
+    border-color: @brand-info;
+    &.active {
+        background: @brand-info;
+        box-shadow: none;
+    }
+}
+.btn-checkbox[data-index='3'] {
+    border-color: @brand-warning;
+    &.active {
+        background: @brand-warning;
+        box-shadow: none;
+    }
+}
+.btn-checkbox[data-index='4'] {
+    border-color: @brand-danger;
+    &.active {
+        background: @brand-danger;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='5'] {
+    border-color: Gold;
+    &.active {
+        background: Gold;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='6'] {
+    border-color: Pink;
+    &.active {
+        background: Pink;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='7'] {
+    border-color: saddlebrown;
+    &.active {
+        background: saddlebrown;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='8'] {
+    border-color: Teal;
+    &.active {
+        background: Teal;
+        box-shadow: none;
+    }
+}
+
+.btn-checkbox[data-index='9'] {
+    border-color: Silver;
+    &.active {
+        background: Silver;
+        box-shadow: none;
+    }
+}

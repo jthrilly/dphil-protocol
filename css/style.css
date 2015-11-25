@@ -1,0 +1,95 @@
+.btn-checkbox {
+  width: 100px;
+  height: 100px;
+  border-width: 10px;
+  border-radius: 50%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  vertical-align: middle;
+  font-size: 10px;
+  white-space: normal;
+  background: white;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+}
+.btn-checkbox.active {
+  color: #fff;
+}
+.btn-checkbox[data-index='0'] {
+  border-color: #01a6c7;
+}
+.btn-checkbox[data-index='0'].active {
+  background: #01a6c7;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='1'] {
+  border-color: #1ECD97;
+}
+.btn-checkbox[data-index='1'].active {
+  background: #1ECD97;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='2'] {
+  border-color: #B16EFF;
+}
+.btn-checkbox[data-index='2'].active {
+  background: #B16EFF;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='3'] {
+  border-color: #FA920D;
+}
+.btn-checkbox[data-index='3'].active {
+  background: #FA920D;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='4'] {
+  border-color: #e85657;
+}
+.btn-checkbox[data-index='4'].active {
+  background: #e85657;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='5'] {
+  border-color: Gold;
+}
+.btn-checkbox[data-index='5'].active {
+  background: Gold;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='6'] {
+  border-color: Pink;
+}
+.btn-checkbox[data-index='6'].active {
+  background: Pink;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='7'] {
+  border-color: saddlebrown;
+}
+.btn-checkbox[data-index='7'].active {
+  background: saddlebrown;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='8'] {
+  border-color: Teal;
+}
+.btn-checkbox[data-index='8'].active {
+  background: Teal;
+  box-shadow: none;
+}
+.btn-checkbox[data-index='9'] {
+  border-color: Silver;
+}
+.btn-checkbox[data-index='9'].active {
+  background: Silver;
+  box-shadow: none;
+}
