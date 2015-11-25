@@ -32,25 +32,30 @@ var protocol = {
                             type: 'text',
                             placeholder: 'Nickname',
                             required: true,
-                        },
-                        contexts: {
-                            type: 'custom',
-                            customType: 'contextField',
-                            options: {
-                                name: 'Josh'
-                            }
                         }
         			},
                     show: function() {
-                        $('.new-node-form, .black-overlay').addClass('show');
-                        $('.new-node-form :input:visible:enabled:first').focus();
-                    },
-                    hide: function() {
-                        window.nameGenForm.reset();
-                        $('.new-node-form, .black-overlay').removeClass('show');
+                        console.log('yo');
+                        window.forms.nameGenForm.addTemporaryFields({
+                            contexts: {
+                                type: 'custom',
+                                customType: 'contextField',
+                                options: {
+                                    name: 'Josh'
+                                }
+                            }
+                        });
                     },
                     submit: function(data) {
                         // Add or update based on the presence of an ID field
+
+                        // fix the context variable as an array.
+                        if (typeof data.contexts !== 'object') {
+                            var contextArray = [];
+                            contextArray.push(data.contexts);
+                            data.contexts = contextArray;
+                        }
+
                         if (data.id) {
                             var id = data.id;
                             delete data.id;
@@ -96,11 +101,10 @@ var protocol = {
                                         markup += `
                                         <span class="button-checkbox">
                                             <button type="button" class="btn-checkbox" data-index="${i}">${context}</button>
-                                            <input type="checkbox" class="hidden"/>
+                                            <input type="checkbox" name="contexts" value="${context}" class="hidden"/>
                                         </span>
                                         `;
-                                        // markup += `<input type="checkbox" data-field="Contexts" name="${context}" id="${context}">
-                                        //     <label class="checkbox" for="is_carer">${context}</label>`;
+
                                         i++;
                                     }
                                     return markup;
