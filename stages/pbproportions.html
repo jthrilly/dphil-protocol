@@ -8,26 +8,26 @@
 var formProperties = {
 	'heading': 'About your Personal Budget',
 	'fields': {},
+    submit: function(data) {
+        console.log(data);
+        if (window.network.egoExists()) {
+            window.network.updateNode(window.network.getEgo().id, data, function() {
+                window.netCanvas.Modules.session.nextStage();
+            });
+        } else {
+            note.error('Data cannot be submitted because no ego was found!');
+        }
+    },
+    load: function() {
+            if (window.network.egoExists()) {
+                var ego = window.network.getEgo();
+                form.addData(ego);
+            }
+    },
 	'options':{
 		'attributes':{
 			'action':'http://httpbin.org/post',
 			'method':'post'
-		},
-		onSubmit: function(data) {
-            console.log(data);
-            if (window.network.egoExists()) {
-                window.network.updateNode(window.network.getEgo().id, data, function() {
-                    window.netCanvas.Modules.session.nextStage();
-                });
-            } else {
-                note.error('Data cannot be submitted because no ego was found!');
-            }
-		},
-		onLoad: function() {
-                if (window.network.egoExists()) {
-		            var ego = window.network.getEgo();
-		            form.addData(ego);
-		        }
 		},
 		'buttons':{
 			'submit':{

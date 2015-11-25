@@ -23,29 +23,29 @@ egoBuilder.build($('.form'), {
 			'type':'hidden'
 		}
 	},
+	submit: function(data) {
+		note.debug('update ego');
+		data.start_time = (new Date()).getTime();
+		data.contexts = []; // create empty container for contexts;
+		if (window.network.egoExists()) {
+			window.network.updateNode(window.network.getEgo().id, data, function() {
+				window.netCanvas.Modules.session.nextStage();
+			});
+		} else {
+			window.network.createEgo(data);
+			window.netCanvas.Modules.session.nextStage();
+		}
+	},
+	load: function() {
+			if (window.network.egoExists()) {
+				var ego = window.network.getEgo();
+				egoBuilder.addData(ego);
+			}
+	},
 	'options':{
 		'attributes':{
 			'action':'http://httpbin.org/post',
 			'method':'post'
-		},
-		onSubmit: function(data) {
-			note.debug('update ego');
-			data.start_time = (new Date()).getTime();
-			data.contexts = []; // create empty container for contexts;
-			if (window.network.egoExists()) {
-				window.network.updateNode(window.network.getEgo().id, data, function() {
-					window.netCanvas.Modules.session.nextStage();
-				});
-			} else {
-				window.network.createEgo(data);
-				window.netCanvas.Modules.session.nextStage();
-			}
-		},
-		onLoad: function() {
-		        if (window.network.egoExists()) {
-		            var ego = window.network.getEgo();
-		            egoBuilder.addData(ego);
-		        }
 		},
 		'buttons':{
 			'submit':{

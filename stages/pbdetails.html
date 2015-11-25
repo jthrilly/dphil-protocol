@@ -39,31 +39,31 @@ form.build($('.form'), {
             ]
         }
 	},
+    submit: function(data) {
+        console.log(data);
+        if (window.network.egoExists()) {
+            // overwrite the data for the next step
+
+            window.network.updateNode(window.network.getEgo().id, data, function() {
+                var ego = window.network.getEgo();
+                delete ego.pbudget_proportions;
+                window.netCanvas.Modules.session.saveData();
+                window.netCanvas.Modules.session.nextStage();
+            });
+        } else {
+            note.error('Data cannot be submitted because no ego was found!');
+        }
+    },
+    load: function() {
+            if (window.network.egoExists()) {
+                var ego = window.network.getEgo();
+                form.addData(ego);
+            }
+    },
 	'options':{
 		'attributes':{
 			'action':'http://httpbin.org/post',
 			'method':'post'
-		},
-		onSubmit: function(data) {
-            console.log(data);
-            if (window.network.egoExists()) {
-                // overwrite the data for the next step
-
-                window.network.updateNode(window.network.getEgo().id, data, function() {
-                    var ego = window.network.getEgo();
-                    delete ego.pbudget_proportions;
-                    window.netCanvas.Modules.session.saveData();
-                    window.netCanvas.Modules.session.nextStage();
-                });
-            } else {
-                note.error('Data cannot be submitted because no ego was found!');
-            }
-		},
-		onLoad: function() {
-                if (window.network.egoExists()) {
-		            var ego = window.network.getEgo();
-		            form.addData(ego);
-		        }
 		},
 		'buttons':{
 			'submit':{
