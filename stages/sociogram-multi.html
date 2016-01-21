@@ -2,7 +2,7 @@
 
 <script>
 
-var sociogram = new window.netCanvas.Modules.SociogramMulti();
+var sociogram = new window.netCanvas.Modules.Sociogram();
 var properties = {
     network: window.network,
     targetEl: 'kineticCanvas',
@@ -183,7 +183,7 @@ var properties = {
             showSelected: {
                 group: 'Role',
                 variable: 'is_localauthority',
-                shortLabel: 'L. Authority?',
+                shortLabel: 'Local Authority?',
                 value: '1'
             },
             prompt: 'Highlight anyone who works for a local authority.'

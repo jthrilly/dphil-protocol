@@ -51,8 +51,12 @@ var protocol = {
                         // fix the context variable as an array.
                         if (typeof data.contexts !== 'object') {
                             var contextArray = [];
-                            contextArray.push(data.contexts);
+                            if (data.contexts) {
+                                contextArray.push(data.contexts);
+                            }
+
                             data.contexts = contextArray;
+
                         }
 
                         if (data.id) {
@@ -91,7 +95,6 @@ var protocol = {
                         customFields: {
                             contextField: {
                                 markup: function () {
-
                                     var markup = '';
                                     var egoContexts = window.network.getEgo().contexts;
                                     markup += `<label class="control-label">Contexts</label>`;
@@ -100,7 +103,7 @@ var protocol = {
                                         markup += `
                                         <span class="button-checkbox">
                                             <button type="button" class="btn-checkbox" data-index="${i}">${context}</button>
-                                            <input type="checkbox" name="contexts" value="${context}" class="hidden"/>
+                                            <input type="checkbox" name="contexts" data-index="${i}" value="${context}" class="hidden"/>
                                         </span>
                                         `;
 
@@ -111,7 +114,6 @@ var protocol = {
                                 initialise: function() {
                                     $(function () {
                                         $('.button-checkbox').each(function () {
-
                                             // Settings
                                             var $widget = $(this),
                                                 $button = $widget.find('button'),
@@ -119,11 +121,13 @@ var protocol = {
 
                                             // Event Handlers
                                             $button.on('click', function () {
+                                                console.log('button click');
                                                 $checkbox.prop('checked', !$checkbox.is(':checked'));
                                                 $checkbox.triggerHandler('change');
                                                 updateDisplay();
                                             });
                                             $checkbox.on('change', function () {
+                                                console.log('checkboxchange');
                                                 updateDisplay();
                                             });
 
@@ -136,18 +140,14 @@ var protocol = {
 
                                                 // Update the button's color
                                                 if (isChecked) {
-                                                    $button
-                                                        .addClass('active');
-                                                }
-                                                else {
-                                                    $button
-                                                        .removeClass('active');
+                                                    $button.addClass('active');
+                                                } else {
+                                                    $button.removeClass('active');
                                                 }
                                             }
 
                                             // Initialization
                                             function init() {
-
                                                 updateDisplay();
                                             }
                                             init();
