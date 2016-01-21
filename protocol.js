@@ -35,7 +35,6 @@ var protocol = {
                         }
         			},
                     show: function() {
-                        console.log('yo');
                         window.forms.nameGenForm.addTemporaryFields({
                             contexts: {
                                 type: 'custom',
