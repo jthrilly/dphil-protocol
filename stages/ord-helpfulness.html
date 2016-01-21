@@ -1,0 +1,23 @@
+<div class="container full-height text-center">
+
+</div>
+
+<script>
+var ordbin = new window.netCanvas.Modules.OrdBin();
+ordbin.init({
+	targetEl: $('.container'),
+	criteria: {},
+	variable: {
+		label:'ord_helpfulness',
+		values: [
+			{label:'Very Helpful', value: 3},
+			{label:'Slightly Helpful', value: 2},
+			{label:'Unhelpful', value: 1},
+			{label:'Very Unhelpful', value: 0},
+			{label:'Not Applicable', value: -1}
+		]
+	},
+	heading: "Overall, how helpful has each person been in the context of having and managing your personal budget?",
+	subheading: ""
+});
+</script>
