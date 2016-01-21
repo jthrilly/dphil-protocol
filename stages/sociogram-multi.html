@@ -65,11 +65,40 @@ var properties = {
         // },
         {
             dataType: 'edge', // namegenerator/Edge/select
-            showEdges: [
-                {label: 'type', value: 'social'}
-            ],
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'social'}
+                ],
+                options: {
+                    stroke: '#01a6c7',
+                }
+            },
             showSelected: false,
+
             prompt: 'Connect anyone who you think would spend time together socially, independently of you.'
+        },
+        {
+            dataType: 'edge', // namegenerator/Edge/select
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'professional'}
+                ],
+                options: {
+                    stroke: '#1ECD97'
+                }
+            },
+            showSelected: false,
+            prompt: 'Connect anyone who you think has interacted with each other in a professional capacity.'
+        },
+        {
+            dataType: 'edge', // namegenerator/Edge/select
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'negative'}
+                ]
+            },
+            showSelected: false,
+            prompt: 'Connect any people who you think have had conflict or who don\'t get on.'
         },
         // {
         //     dataType: 'namegenerator', // namegenerator/Edge/select
