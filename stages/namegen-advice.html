@@ -13,12 +13,25 @@ namegenerator.init({
 		origin: 'node', // edge or node.
 		namegenerators: [
 			{
-				prompt: 'Who did you get advice from as part of the process?',
+				prompt: 'In the context of your personal budget, who has given you advice?',
 				label: 'advice_given',
 				togglePanelVariable: 'advice_given',
 				variables: [
 					{
 						label: 'advice_given',
+						value: 'true',
+						type: 'select',
+						showOnForm: false,
+					}
+				]
+			},
+			{
+				prompt: 'Is there anyone that you specifically sought out for their opinion about something to do with your personal budget?',
+				label: 'advice_sought',
+				togglePanelVariable: 'advice_sought',
+				variables: [
+					{
+						label: 'advice_sought',
 						value: 'true',
 						type: 'select',
 						showOnForm: false,

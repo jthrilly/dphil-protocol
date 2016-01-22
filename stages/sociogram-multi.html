@@ -75,7 +75,79 @@ var properties = {
             },
             showSelected: false,
 
-            prompt: 'Connect anyone who you think would spend time together socially, independently of you.'
+            prompt: 'Connect anyone who you think would spend time together socially without you being there.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'social'}
+                ],
+                options: {
+                    stroke: '#01a6c7',
+                }
+            },
+            showSelected: {
+                group: 'Role',
+                variable: 'is_carer',
+                shortLabel: 'Carer?',
+                value: '1'
+            },
+            prompt: 'Highlight your carer or carers.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'social'}
+                ],
+                options: {
+                    stroke: '#01a6c7',
+                }
+            },
+            showSelected: {
+                group: 'Role',
+                variable: 'is_employee',
+                shortLabel: 'Employee?',
+                value: '1'
+            },
+            prompt: 'Highlight anyone you employ in a social care capacity, such as a personal assistant.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'social'}
+                ],
+                options: {
+                    stroke: '#01a6c7',
+                }
+            },
+            showSelected: {
+                group: 'Role',
+                variable: 'is_localauthority',
+                shortLabel: 'Local Authority?',
+                value: '1'
+            },
+            prompt: 'Highlight anyone who works for a local authority.'
+        },
+        {
+            dataType: 'namegenerator', // namegenerator/Edge/select
+            showEdges: {
+                criteria: [
+                    {label: 'type', value: 'social'}
+                ],
+                options: {
+                    stroke: '#01a6c7',
+                }
+            },
+            showSelected: {
+                group: 'Role',
+                variable: 'is_otherprofessional',
+                shortLabel: 'Other prof.?',
+                value: '1'
+            },
+            prompt: 'Highlight anyone else who is a professional in the general area of social care (perhaps working for a care provider, or a charity).'
         },
         {
             dataType: 'edge', // namegenerator/Edge/select
@@ -87,8 +159,9 @@ var properties = {
                     stroke: '#1ECD97'
                 }
             },
-            showSelected: false,
-            prompt: 'Connect anyone who you think has interacted with each other in a professional capacity.'
+            showSelected: 'multiple',
+            selectVariables: ['is_localauthority', 'is_otherprofessional', 'is_employee'],
+            prompt: 'Connect anyone who interacts with each other in a professional capacity.'
         },
         {
             dataType: 'edge', // namegenerator/Edge/select
@@ -98,7 +171,7 @@ var properties = {
                 ]
             },
             showSelected: false,
-            prompt: 'Connect any people who you think have had conflict or who don\'t get on.'
+            prompt: 'Connect any people who have had conflict or who sometimes don\'t get on.'
         },
         // {
         //     dataType: 'namegenerator', // namegenerator/Edge/select
@@ -178,58 +251,7 @@ var properties = {
         //     },
         //     prompt: 'Is there anyone important, either personally, or in the context of your social care, who you know primarily through the internet? For example, someone you speak to on a forum or social media site.'
         // },
-        {
-            dataType: 'namegenerator', // namegenerator/Edge/select
-            showEdges: [
-                {label: 'type', value: 'social'}
-            ],
-            showSelected: {
-                group: 'Role',
-                variable: 'is_carer',
-                shortLabel: 'Carer?',
-                value: '1'
-            },
-            prompt: 'Highlight your carer or carers.'
-        },
-        {
-            dataType: 'namegenerator', // namegenerator/Edge/select
-            showEdges: [
-                {label: 'type', value: 'social'}
-            ],
-            showSelected: {
-                group: 'Role',
-                variable: 'is_employee',
-                shortLabel: 'Employee?',
-                value: '1'
-            },
-            prompt: 'Highlight anyone you employ in a social care capacity, such as a personal assistant or someone who helps with transportation.'
-        },
-        {
-            dataType: 'namegenerator', // namegenerator/Edge/select
-            showEdges: [
-                {label: 'type', value: 'social'}
-            ],
-            showSelected: {
-                group: 'Role',
-                variable: 'is_localauthority',
-                shortLabel: 'Local Authority?',
-                value: '1'
-            },
-            prompt: 'Highlight anyone who works for a local authority.'
-        },
-        {
-            dataType: 'namegenerator', // namegenerator/Edge/select
-            showEdges: [
-                {label: 'type', value: 'social'}
-            ],
-            showSelected: {
-                group: 'Role',
-                variable: 'is_otherprofessional',
-                shortLabel: 'Other prof.?',
-                value: '1'
-            },
-            prompt: 'Highlight anyone else who is a professional in the general area of social care (perhaps working for a care provider, or a charity).'
-        }
+
 
     ],
     criteria: { // criteria for being shown on this screen

@@ -1,0 +1,23 @@
+<div class="container full-height text-center">
+
+</div>
+
+<script>
+var ordbin = new window.netCanvas.Modules.OrdBin();
+ordbin.init({
+	targetEl: $('.container'),
+	criteria: {},
+	variable: {
+		label:'ord_negative',
+		values: [
+			{label:'Always', value: 4},
+			{label:'Often', value: 3},
+			{label:'Sometimes', value: 2},
+			{label:'Rarely', value: 1},
+			{label:'Never', value: 0}
+		]
+	},
+	heading: "How often do you have difficult or negative interactions with each of these people?",
+	subheading: ""
+});
+</script>

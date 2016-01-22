@@ -11,7 +11,7 @@ var protocol = {
             var init = function() {
                 var nameGenForm = new window.netCanvas.Modules.FormBuilder('nameGenForm');
                 var newNodeForm = '<div class="new-node-form dialog"></div>';
-                $('body').append(newNodeForm);
+                $('.black-overlay').append(newNodeForm);
                 nameGenForm.build($('.new-node-form'), {
         			title: 'Add a person you know',
         			fields: {
@@ -204,7 +204,9 @@ var protocol = {
         {icon: 'fa-file-text', label:'Layout', page:'layout.html'},
         {icon: 'fa-file-text', label:'Sociogram Missing', page:'sociogram-missing.html'},
         {icon: 'fa-file-text', label:'Sociogram Multi', page:'sociogram-multi.html'},
-        {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-helpfulness.html'}
+        {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-helpfulness.html'},
+        {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-disempowering.html'},
+        {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-stress.html'},
 
     ]
 };

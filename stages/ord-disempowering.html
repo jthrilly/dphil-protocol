@@ -1,0 +1,23 @@
+<div class="container full-height text-center">
+
+</div>
+
+<script>
+var ordbin = new window.netCanvas.Modules.OrdBin();
+ordbin.init({
+	targetEl: $('.container'),
+	criteria: {},
+	variable: {
+		label:'ord_negative',
+		values: [
+			{label:'Total', value: 4},
+			{label:'A Lot', value: 3},
+			{label:'Some', value: 2},
+			{label:'A Little', value: 1},
+			{label:'Not at all', value: 0}
+		]
+	},
+	heading: "To what extent do you feel each person has power or control over you and your life?",
+	subheading: ""
+});
+</script>
