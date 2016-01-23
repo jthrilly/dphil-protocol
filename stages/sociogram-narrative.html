@@ -1,0 +1,43 @@
+<div id="kineticCanvas"></div>
+
+<script>
+
+var sociogram = new window.netCanvas.Modules.SociogramNarrative();
+var properties = {
+    network: window.network,
+    targetEl: 'kineticCanvas',
+    modes:['Community', 'Position'],
+    panels: ['mode', 'details'],
+    options: {
+        concentricCircleSkew: true
+    },
+    dataOrigin: {
+        'Position': {
+            type: 'node',
+            variable: 'coords'
+        },
+        'Community' : {
+            type: 'ego',
+            name: 'Groups',
+            egoVariable: 'contexts',
+            variable: 'contexts'
+        }
+    },
+    prompts: [
+        {
+            dataType: 'edge', // namegenerator/Edge/select
+            showEdges: false,
+            showSelected: false,
+
+            prompt: 'Narrative'
+        }
+    ],
+    criteria: { // criteria for being shown on this screen
+        includeEgo: false,
+        query: {
+        }
+    }
+};
+sociogram.init(properties);
+
+</script>
