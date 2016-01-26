@@ -5,6 +5,53 @@
 var sociogram = new window.netCanvas.Modules.SociogramNarrative();
 var properties = {
     network: window.network,
+    presets: [
+        {
+            name: 'Negative Network',
+            edges: [
+                {
+                    types:['negative'],
+                    keyLabel: 'Don\'t get on',
+                    stroke: '#e85657'
+                }
+            ],
+            selected: [
+                {
+                    variables: ['advice_refused', 'advice_negative', 'info_refused', 'support_failed'],
+                    label: 'Had a negative interaction with',
+                    color: '#e85657'
+                }
+            ],
+            size: ['ord_stress']
+        },
+        {
+            name: 'Positive Network',
+            edges: [
+                {
+                    types:['professional'],
+                    keyLabel: 'Worked together',
+                    stroke: '#1ECD97'
+                },
+                {
+                    types:['social'],
+                    keyLabel: 'Spend time together',
+                    stroke: '#01a6c7'
+                }
+            ],
+            selected: [
+                {
+                    variables: ['support_emotional', 'support_practical', 'advice_sought', 'advice_given', 'information_given'],
+                    label: 'Got help from',
+                    color: '#01a6c7'
+                }
+
+            ],
+            size: ['ord_helpfulness']
+        }
+    ],
+    selectVariables: [],
+    edgeTypes: [],
+    sizeVariables: [],
     targetEl: 'kineticCanvas',
     modes:['Community', 'Position'],
     panels: ['mode', 'details'],
