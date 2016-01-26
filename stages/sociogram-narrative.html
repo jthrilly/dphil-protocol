@@ -47,6 +47,43 @@ var properties = {
 
             ],
             size: ['ord_helpfulness']
+        },
+        {
+            name: 'Professional Network',
+            edges: [
+                {
+                    types:['professional'],
+                    keyLabel: 'Worked together',
+                    stroke: '#1ECD97'
+                }
+            ],
+            selected: [
+                {
+                    variables: ['is_professional', 'is_carer', 'is_employee', 'is_localauthority'],
+                    label: 'Social care professionals',
+                    color: '#1ECD97'
+                }
+
+            ],
+            size: ['ord_helpfulness', 'org_negative']
+        },
+        {
+            name: 'Tech Network',
+            edges: [
+                {
+                    types:['social','professional'],
+                    keyLabel: 'Any relationship',
+                    stroke: '#B16EFF'
+                }
+            ],
+            selected: [
+                {
+                    variables: ['technologically_mediated'],
+                    label: 'People you know online',
+                    color: '#B16EFF'
+                }
+
+            ]
         }
     ],
     selectVariables: [],

@@ -207,6 +207,7 @@ var protocol = {
         {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-helpfulness.html'},
         {icon: 'fa-file-text', label:'Ord: Disempowering', page:'ord-disempowering.html'},
         {icon: 'fa-file-text', label:'Ord: Stress', page:'ord-stress.html'},
+        {icon: 'fa-file-text', label:'Ord: Negative', page:'ord-negative.html'},
         {icon: 'fa-bullseye', label:'Narrative', page:'sociogram-narrative.html'},
 
     ]
