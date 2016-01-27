@@ -11,7 +11,7 @@ var properties = {
             edges: [
                 {
                     types:['negative'],
-                    keyLabel: 'Don\'t get on',
+                    keyLabel: 'Have had conflict',
                     stroke: '#e85657'
                 }
             ],
@@ -22,10 +22,10 @@ var properties = {
                     color: '#e85657'
                 }
             ],
-            size: ['ord_stress']
+            size: ['ord_disempowering', 'ord_negative', 'ord_stress']
         },
         {
-            name: 'Positive Network',
+            name: 'Support Network',
             edges: [
                 {
                     types:['professional'],
@@ -40,9 +40,38 @@ var properties = {
             ],
             selected: [
                 {
-                    variables: ['support_emotional', 'support_practical', 'advice_sought', 'advice_given', 'information_given'],
-                    label: 'Got help from',
+                    variables: ['support_emotional', 'support_practical'],
+                    label: 'Got support from',
                     color: '#01a6c7'
+                },
+                {
+                    variables: ['support_failed'],
+                    label: 'Didn\'t provide support',
+                    color: '#e85657'
+                }
+
+            ],
+            size: ['ord_helpfulness']
+        },
+        {
+            name: 'Advice & Information Network',
+            edges: [
+                {
+                    types:['professional'],
+                    keyLabel: 'Worked together',
+                    stroke: '#1ECD97'
+                }
+            ],
+            selected: [
+                {
+                    variables: ['advice_given', 'advice_sought', 'info_given'],
+                    label: 'Got advice or info from',
+                    color: '#FA920D'
+                },
+                {
+                    variables: ['advice_refused', 'advice_negative', 'info_refused'],
+                    label: 'Refused, or gave bad advice or info',
+                    color: '#e85657'
                 }
 
             ],
@@ -65,17 +94,10 @@ var properties = {
                 }
 
             ],
-            size: ['ord_helpfulness', 'org_negative']
+            size: ['ord_disempowering', 'ord_negative', 'ord_stress']
         },
         {
             name: 'Tech Network',
-            edges: [
-                {
-                    types:['social','professional'],
-                    keyLabel: 'Any relationship',
-                    stroke: '#B16EFF'
-                }
-            ],
             selected: [
                 {
                     variables: ['technologically_mediated'],
