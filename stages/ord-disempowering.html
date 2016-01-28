@@ -6,18 +6,19 @@
 var ordbin = new window.netCanvas.Modules.OrdBin();
 ordbin.init({
 	targetEl: $('.container'),
+	special: 'professional',
 	criteria: {},
 	variable: {
 		label:'ord_disempowering',
 		values: [
-			{label:'Almost Complete', value: 4},
-			{label:'A Lot', value: 3},
+			{label:'Very Much', value: 4},
+			{label:'Quite a Bit', value: 3},
 			{label:'Some', value: 2},
-			{label:'Little', value: 1},
+			{label:'Very Little', value: 1},
 			{label:'None', value: 0}
 		]
 	},
-	heading: "How much power or control over you do you feel each person has?",
+	heading: "How much control do you feel each of these people have over you?",
 	subheading: ""
 });
 </script>

@@ -16,9 +16,9 @@ var protocol = {
         			title: 'Add a person you know',
         			fields: {
         				name: {
-                            title: 'First Name',
+                            title: 'Name',
         					type: 'text',
-        					placeholder: 'First Name',
+        					placeholder: 'Name',
         					required: true,
         				},
                         label: {
@@ -186,7 +186,6 @@ var protocol = {
     },
     stages: [
         {icon: 'fa-file-text', label:'Intro', page:'intro.html'},
-        {icon: 'fa-file-text', label:'About You', page:'pbdetails.html'},
         {icon: 'fa-file-text', label:'Context Intro', page:'contextintro.html'},
         {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
         {icon: 'fa-file-text', label:'NG: Close', page:'namegen-close.html'},
@@ -194,6 +193,7 @@ var protocol = {
         {icon: 'fa-file-text', label:'NG: Advice', page:'namegen-advice.html'},
         {icon: 'fa-file-text', label:'NG: Information', page:'namegen-information.html'},
         {icon: 'fa-file-text', label:'NG: Technology', page:'namegen-technology.html'},
+        {icon: 'fa-file-text', label:'Ord: Closeness', page:'ord-closeness.html'},
         {icon: 'fa-bullseye', label:'Layout', page:'layout.html'},
         {icon: 'fa-bullseye', label:'Sociogram Missing', page:'sociogram-missing.html'},
         {icon: 'fa-bullseye', label:'Sociogram Multi', page:'sociogram-multi.html'},

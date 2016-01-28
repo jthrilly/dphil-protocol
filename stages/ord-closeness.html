@@ -1,0 +1,22 @@
+<div class="container full-height text-center">
+
+</div>
+
+<script>
+var ordbin = new window.netCanvas.Modules.OrdBin();
+ordbin.init({
+	targetEl: $('.container'),
+	criteria: {},
+	variable: {
+		label:'ord_closeness',
+		values: [
+			{label:'Very Close', value: 2},
+			{label:'Somewhat Close', value: 1},
+			{label:'Not Close At All', value: 0},
+
+		]
+	},
+	heading: "Rate the strength of your relationship with each person.",
+	subheading: ""
+});
+</script>
