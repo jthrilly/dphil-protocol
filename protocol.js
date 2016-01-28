@@ -192,8 +192,7 @@ var protocol = {
     },
     stages: [
         {icon: 'fa-file-text', label:'Intro', page:'intro.html'},
-        {icon: 'fa-file-text', label:'Personal Budget Details', page:'pbdetails.html'},
-        {icon: 'fa-file-text', label:'Personal Budget Proportions', page:'pbproportions.html'},
+        {icon: 'fa-file-text', label:'About You', page:'pbdetails.html'},
         {icon: 'fa-file-text', label:'Context Intro', page:'contextintro.html'},
         {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
         {icon: 'fa-file-text', label:'NG: Close', page:'namegen-close.html'},
