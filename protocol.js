@@ -15,18 +15,12 @@ var protocol = {
                 nameGenForm.build($('.new-node-form'), {
         			title: 'Add a person you know',
         			fields: {
-        				first_name: {
+        				name: {
                             title: 'First Name',
         					type: 'text',
         					placeholder: 'First Name',
         					required: true,
         				},
-                        last_name: {
-                            title: 'Last Name',
-                            type: 'text',
-                            placeholder: 'Last Name',
-                            required: true,
-                        },
                         label: {
                             title: 'Nickname',
                             type: 'text',
