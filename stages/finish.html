@@ -1,0 +1,10 @@
+<div class="container">
+	<div class="col-xs-6 text-center"><h2>Finished!</h2></div>
+</div>
+
+<script type="text/javascript">
+	note.debug('update ego');
+	var data = {};
+	data.finish_time = (new Date()).getTime();
+	window.network.updateNode(window.network.getEgo().id, data);
+</script>
