@@ -56,9 +56,9 @@ var protocol = {
                         if (data.id) {
                             var id = data.id;
                             delete data.id;
-                            window.network.updateNode(id, data);
+                            netCanvas.Modules.session.getPrimaryNetwork().updateNode(id, data);
                         } else {
-                            window.network.addNode(data);
+                            netCanvas.Modules.session.getPrimaryNetwork().addNode(data);
                         }
 
                         window.forms.nameGenForm.reset();
@@ -90,7 +90,7 @@ var protocol = {
                             contextField: {
                                 markup: function () {
                                     var markup = '';
-                                    var egoContexts = window.network.getEgo().contexts;
+                                    var egoContexts = netCanvas.Modules.session.getPrimaryNetwork().getEgo().contexts;
                                     markup += `<label class="control-label">Contexts</label>`;
                                     var i = 0;
                                     for (let context of egoContexts) {

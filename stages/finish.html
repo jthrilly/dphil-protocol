@@ -6,5 +6,5 @@
 	note.debug('update ego');
 	var data = {};
 	data.finish_time = (new Date()).getTime();
-	window.network.updateNode(window.network.getEgo().id, data);
+	netCanvas.Modules.session.getPrimaryNetwork().updateNode(netCanvas.Modules.session.getPrimaryNetwork().getEgo().id, data);
 </script>

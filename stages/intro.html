@@ -4,6 +4,8 @@
 
 <script type="text/javascript">
 var egoBuilder = new window.netCanvas.Modules.FormBuilder();
+var network = netCanvas.Modules.session.getPrimaryNetwork();
+
 egoBuilder.build($('.form'), {
 	'heading': 'Welcome',
 	'title': 'Create a new case',
@@ -27,18 +29,18 @@ egoBuilder.build($('.form'), {
 		note.debug('update ego');
 		data.start_time = (new Date()).getTime();
 		data.contexts = []; // create empty container for contexts;
-		if (window.network.egoExists()) {
-			window.network.updateNode(window.network.getEgo().id, data, function() {
+		if (network.egoExists()) {
+			network.updateNode(network.getEgo().id, data, function() {
 				window.netCanvas.Modules.session.nextStage();
 			});
 		} else {
-			window.network.createEgo(data);
+			network.createEgo(data);
 			window.netCanvas.Modules.session.nextStage();
 		}
 	},
 	load: function() {
-			if (window.network.egoExists()) {
-				var ego = window.network.getEgo();
+			if (network.egoExists()) {
+				var ego = network.getEgo();
 				egoBuilder.addData(ego);
 			}
 	},
