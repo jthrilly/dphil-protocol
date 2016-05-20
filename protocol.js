@@ -5,6 +5,26 @@ var protocol = {
     sessionParameters: {
         name: 'DPhil Protocol'
     },
+    stages: [
+        {icon: 'fa-file-text', label:'Intro', page:'intro.html'},
+        {icon: 'fa-file-text', label:'Context Intro', page:'contextintro.html'},
+        {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
+        {icon: 'fa-file-text', label:'NG: Close', page:'namegen-close.html'},
+        {icon: 'fa-file-text', label:'NG: Support', page:'namegen-support.html'},
+        {icon: 'fa-file-text', label:'NG: Advice', page:'namegen-advice.html'},
+        {icon: 'fa-file-text', label:'NG: Information', page:'namegen-information.html'},
+        {icon: 'fa-file-text', label:'NG: Technology', page:'namegen-technology.html'},
+        {icon: 'fa-file-text', label:'Ord: Closeness', page:'ord-closeness.html'},
+        {icon: 'fa-bullseye', label:'Layout', page:'layout.html'},
+        {icon: 'fa-bullseye', label:'Sociogram Missing', page:'sociogram-missing.html'},
+        {icon: 'fa-bullseye', label:'Sociogram Multi', page:'sociogram-multi.html'},
+        {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-helpfulness.html'},
+        {icon: 'fa-file-text', label:'Ord: Disempowering', page:'ord-disempowering.html'},
+        {icon: 'fa-file-text', label:'Ord: Stress', page:'ord-stress.html'},
+        {icon: 'fa-file-text', label:'Ord: Negative', page:'ord-negative.html'},
+        {icon: 'fa-bullseye', label:'Narrative', page:'sociogram-narrative.html'},
+        {icon: 'fa-file-text', label:'Finish', page:'finish.html'}
+    ],
     globals: {
         nameGenForm: function () {
             'use strict';
@@ -183,25 +203,5 @@ var protocol = {
             'use strict';
             return false;
         }
-    },
-    stages: [
-        {icon: 'fa-file-text', label:'Intro', page:'intro.html'},
-        {icon: 'fa-file-text', label:'Context Intro', page:'contextintro.html'},
-        {icon: 'fa-file-text', label:'Context Generator', page:'contextgenerator.html'},
-        {icon: 'fa-file-text', label:'NG: Close', page:'namegen-close.html'},
-        {icon: 'fa-file-text', label:'NG: Support', page:'namegen-support.html'},
-        {icon: 'fa-file-text', label:'NG: Advice', page:'namegen-advice.html'},
-        {icon: 'fa-file-text', label:'NG: Information', page:'namegen-information.html'},
-        {icon: 'fa-file-text', label:'NG: Technology', page:'namegen-technology.html'},
-        {icon: 'fa-file-text', label:'Ord: Closeness', page:'ord-closeness.html'},
-        {icon: 'fa-bullseye', label:'Layout', page:'layout.html'},
-        {icon: 'fa-bullseye', label:'Sociogram Missing', page:'sociogram-missing.html'},
-        {icon: 'fa-bullseye', label:'Sociogram Multi', page:'sociogram-multi.html'},
-        {icon: 'fa-file-text', label:'Ord: Helpfulness', page:'ord-helpfulness.html'},
-        {icon: 'fa-file-text', label:'Ord: Disempowering', page:'ord-disempowering.html'},
-        {icon: 'fa-file-text', label:'Ord: Stress', page:'ord-stress.html'},
-        {icon: 'fa-file-text', label:'Ord: Negative', page:'ord-negative.html'},
-        {icon: 'fa-bullseye', label:'Narrative', page:'sociogram-narrative.html'},
-        {icon: 'fa-file-text', label:'Finish', page:'finish.html'}
-    ]
+    }
 };
