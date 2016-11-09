@@ -111,7 +111,8 @@ var protocol = {
                                 markup: function () {
                                     var markup = '';
                                     var egoContexts = window.netCanvas.Modules.session.getPrimaryNetwork().getEgo().contexts;
-                                    // markup += `<label class="control-label">Contexts</label>`;
+
+                                    markup += `<label class="control-label">Contexts</label>`;
                                     var i = 0;
                                     for (let context of egoContexts) {
                                         markup += `
